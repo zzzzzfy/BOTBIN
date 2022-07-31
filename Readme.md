@@ -4,7 +4,7 @@ This repository implements the Bottom-$k$ and bucket indexing (BOTBIN) data stru
 . It can support the construction of similarity index and bucket index from a graph, so as to quickly obtain approximate results of graph clustering. And for inserting or deleting edges, it can support fast modification, and return good clustering results with theoretical guarantees.
 
 ## Compile the code
-Please note that the path of the input dataset needs to be configured by modifying the code. After you have configured the file path, you can execute the following instructions to generate the executable file *botbin*.
+Please note that the path of the input dataset needs to be configured by modifying the code. After you have configured the file path, you can execute the following commands to generate the executable file *botbin*.
 
 ```sh
 $ cd src
@@ -28,7 +28,7 @@ Evenly sample some edges for update test.
 ```sh
 $ ./botbin -action 4 
 ```
-Update test under BOTBIN with specific parameters generated earlier.
+Update test under BOTBIN with specific parameters.
 ```sh
 $ ./botbin -action 1 -file {file_id} -rho {rho} -delta {delta} 
 ```
