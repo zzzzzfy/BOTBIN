@@ -27,7 +27,7 @@ All the datasets used can be downloaded by clicking on the link below and then c
 ,[PP-Miner](https://snap.stanford.edu/biodata/datasets/10028/10028-PP-Miner.html)
 ,[Twitter](http://konect.cc/networks/twitter/)
 ,[Friendster](http://konect.cc/networks/friendster/)
-,[Web](https://networkrepository.com/web-cc12-hostgraph.php). Each dataset needs to correspond to the *file_id* in *Config.h*, or you can specify your own dataset and custom *file_id*.
+,[Web](https://networkrepository.com/web-cc12-hostgraph.php). Each dataset needs to correspond to a *file_id* in *Config.h*, or you can specify your own dataset and custom *file_id*.
 
 Clean the dataset {file_id}
 ```sh
