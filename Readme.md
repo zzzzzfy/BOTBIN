@@ -15,12 +15,13 @@ After compiling the code, an executable file called *botbin* is generated.
 
 ## Run the code
 
+For example, you can download the dataset of twitter from http://konect.cc/networks/twitter/. Then you need to change the user_name and create the appropriate folder to ensure that the dataset is in the same path as in *Config.h* (you can also specify your own file path). Then change the downloaded twitter file to out.twitter and make sure its path is the same as *src_* in *Config.h* under the condition that the *file_id* is 0. The *file_id* is 0 corresponds to the twitter dataset, and other datasets can be configured in the same way. Then just run the following command to clean the dataset corresponding to *file_id*.
+
 Clean the dataset {file_id}
 ```sh
 $ ./botbin -action 0 -file {file_id}
 ```
-
-Build the BOTBIN of dataset {file_id} with the paramet $\rho$ and $\delta$.
+After cleaning the dataset, you can run the following command directly. Build the BOTBIN of dataset {file_id} with the paramet $\rho$ and $\delta$.
 ```sh
 $ ./botbin -action 1 -file {file_id} -rho {rho} -delta {delta} -build
 ```
@@ -40,15 +41,6 @@ $ ./botbin -action 1 -file {file_id} -rho {rho} -delta {delta} -query
 
 *Read the code for more details.*
 
-
-## Data format
-[vertex_id1] [vertex_id2]
-
-[vertex_id1] [vertex_id2]
-
-[vertex_id1] [vertex_id2]
-
-...
 
 ## Acknowledgements
 
