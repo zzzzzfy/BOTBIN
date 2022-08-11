@@ -18,16 +18,7 @@ After compiling the code, an executable file called *botbin* is generated.
 For example, you can download the dataset of twitter from http://konect.cc/networks/twitter/. Then you need to change the user_name and create the appropriate folder to ensure that the dataset is in the same path as in *Config.h* (you can also specify your own file path). Then change the downloaded twitter file to out.twitter and make sure its path is the same as *src_* in *Config.h* under the condition that the *file_id* is 0. The *file_id* is 0 corresponds to the twitter dataset, and other datasets can be configured in the same way. Then just run the following command to clean the dataset corresponding to *file_id*.
 
 All the datasets used can be downloaded by clicking on the link below and then cleaned in a similar way. Datasets:
-[Skitter](http://konect.cc/networks/as-skitter/),
-[Pokec](http://konect.cc/networks/soc-pokec-relationships/)
-,[Topcats](https://snap.stanford.edu/data/wiki-topcats.html)
-,[LiveJournal](http://konect.cc/networks/soc-LiveJournal1/)
-,[Orkut](http://konect.cc/networks/orkut-links/)
-,[Brain](https://networkrepository.com/bn-human-Jung2015-M87113878.php)
-,[PP-Miner](https://snap.stanford.edu/biodata/datasets/10028/10028-PP-Miner.html)
-,[Twitter](http://konect.cc/networks/twitter/)
-,[Friendster](http://konect.cc/networks/friendster/)
-,[Web](https://networkrepository.com/web-cc12-hostgraph.php). Each dataset needs to correspond to a *file_id* in *Config.h*, or you can specify your own dataset and custom *file_id*.
+[Skitter](http://konect.cc/networks/as-skitter/), [Pokec](http://konect.cc/networks/soc-pokec-relationships/), [Topcats](https://snap.stanford.edu/data/wiki-topcats.html), [LiveJournal](http://konect.cc/networks/soc-LiveJournal1/), [Orkut](http://konect.cc/networks/orkut-links/), [Brain](https://networkrepository.com/bn-human-Jung2015-M87113878.php), [PP-Miner](https://snap.stanford.edu/biodata/datasets/10028/10028-PP-Miner.html), [Twitter](http://konect.cc/networks/twitter/), [Friendster](http://konect.cc/networks/friendster/), [Web](https://networkrepository.com/web-cc12-hostgraph.php). Each dataset needs to correspond to a *file_id* in *Config.h*, or you can specify your own dataset and custom *file_id*.
 
 Clean the dataset {file_id}
 ```sh
