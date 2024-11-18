@@ -16,7 +16,101 @@
 #include <unordered_set>
 
 class Graph {
+		struct miniHeap {
+		miniHeap() {}
+		miniHeap(int size_n) {
+			size_ = size_n;
+			cur_ = 0;
+			pos_.resize(size_n + 5, -1);
+			value_.resize(size_n + 5);
+			lprp_.resize(size_n + 5);
+			for (int i = 0; i < size_; i++) {
+				lprp_[i].first = lprp_[i].second = -1;
+			}
+		}
+		int size_, cur_;
+		vector<int> pos_; // recording vertex u position
+		vector<pair<int, int> > value_; // first cnt second vertex num
+		vector<pair<int, int> > lprp_; // left pos right pos
+		void increase_by_id(int vid) {
+			int v_pos = pos_[vid];
+			int v_value = value_[v_pos].first;
+			int new_pos = lprp_[v_value].first;
+			if (new_pos != v_pos) {
+				pos_[value_[new_pos].second] = v_pos;
+				pos_[value_[v_pos].second] = new_pos;
 
+				swap(value_[v_pos], value_[new_pos]);
+			}
+			lprp_[v_value].first += 1;
+			if (lprp_[v_value].first > lprp_[v_value].second) {
+				lprp_[v_value].first = lprp_[v_value].second = -1;
+			}
+			if (lprp_[v_value + 1].first == -1) {
+				lprp_[v_value + 1].first = lprp_[v_value + 1].second = new_pos;
+			}
+			else {
+				lprp_[v_value + 1].second += 1;
+			}
+		}
+
+		void decrease_by_id(int vid) {
+			int v_pos = pos_[vid];
+			int v_value = value_[v_pos].first;
+			int new_pos = lprp_[v_value].second;
+			if (new_pos != v_pos) {
+				pos_[value_[new_pos].second] = v_pos;
+				pos_[value_[v_pos].second] = new_pos;
+
+				swap(value_[v_pos], value_[new_pos]);
+			}
+			lprp_[v_value].second -= 1;
+			if (lprp_[v_value].first > lprp_[v_value].second) {
+				lprp_[v_value].first = lprp_[v_value].second = -1;
+			}
+			if (lprp_[v_value - 1].first == -1) {
+				lprp_[v_value - 1].first = lprp_[v_value - 1].second = new_pos;
+			}
+			else {
+				lprp_[v_value - 1].first -= 1;
+			}
+		}
+
+		void init_bucket() {
+			std::sort(value_.begin(), value_.begin() + cur_, cmp_pr);
+			int lst_lp = 0, lst_rp = 0;
+			for (int i = 0; i < cur_; i++) {
+				pos_[value_[i].second] = i;
+			}
+			for (int i = 0; i < size_; i++) {
+				if (pos_[i] == -1) {
+					insert(make_pair(0, i));
+				}
+			}
+			for (int i = 0; i < size_; i++) {
+				if (i == 0) continue;
+				if (value_[i].first != value_[i - 1].first) {
+					lprp_[value_[i - 1].first].first = lst_lp;
+					lprp_[value_[i - 1].first].second = i - 1;
+					lst_lp = i;
+				}
+			}
+			lprp_[value_[size_ - 1].first].first = lst_lp;
+			lprp_[value_[size_ - 1].first].second = size_ - 1;
+
+		}
+		void insert(pair<int, int> tmp_ins) {
+			value_[cur_] = tmp_ins;
+			pos_[tmp_ins.second] = cur_;
+			cur_++;
+		}
+		void print() {
+			for (int i = 0; i < size_; i++) {
+				std::cout << value_[i].first << " " << value_[i].second << " " << i << ":" << pos_[i] << " " << lprp_[i].first << " " << lprp_[i].second << " " << "\n";
+
+			}
+		}
+	};
 
 	int tot_core = 0;
 	double bucket_width_ = 0.01;
